@@ -1,0 +1,91 @@
+{% extends 'layout.html' %}
+
+{% block welcome %}
+<h2 class="nav navbar-nav navbar-brand" style="color:#333; margin-left:150px;">Welcome, {{ username }}!</h2>
+{% endblock %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div>
+                <div id="custom-search-input">
+                    <div class="input-group col-md-6 col-md-offset-3">
+                        <input type="text" id="Search" class="form-control input-lg" placeholder="search by name" />
+                        <span class="input-group-btn">
+                        <button class="btn btn-lg" onclick="searchname()" style="background-color: #8B81B2" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+            function searchname() {
+                var sname = $("#Search").val();
+                console.log(sname);
+                $.ajax({
+                    url: '/searchName/' + sname + '/',
+                    type: 'POST',
+                    data: {'name' : sname},
+                    success: function(response) {
+                        console.log(response);
+                        window.location.href = '/searchName/' + sname + '/';
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            };
+    </script>
+
+    <div class="container">
+        <h5 class="pink text-center">or choose a category</h5>
+    </div>
+    <div class='blk container content'>
+      <div class='row'>
+        {% for category in categories %}
+            <div class="category col-sm-2 text-center">
+                <h3><a href="{{ url_for('search', ctgry=category[0]) }}">{{ category[0] }}</a></h3>
+                  <h5>{{ category[1] }}</h5>
+            </div>
+        {% endfor %}
+      </div>
+</div>
+
+<!--filters
+    different for each category
+        ex. Food bank- # of beds, subsidized, ...etc.
+        Categories:
+            Housing
+            Medical (Dental, Medical)
+            Mental Health (Counseling, Psych Evals)
+            Job Readiness (Resume Building)
+            Legal (Criminal Record)
+            Employment
+            Transportation
+            Professional Mentors
+            Childcare
+            Vehicle (Drivers' License, classes, vehicle donations)
+            Life Skills / Parenting Classes
+            Education (GED classes, scholarships, higher ed, etc.)
+            Survivor Networks (Parents of Survivors?)
+
+        Filters:
+            Takes Non-Citizens
+            Documentation (ID, SS, Birth Certificate)
+
+
+-->
+
+
+
+
+</div>
+{% endblock %}
+
+</html>

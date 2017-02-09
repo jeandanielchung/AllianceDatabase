@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{%block content %}
+
+<div class="jumbotron container col-sm-8 col-sm-offset-2">
+    <div class="col-md-8 container text-center">
+
+        <h1>{{ orgdata[0][0] }}</h1>
+        <h4>000-000-0000</h4>
+        <p class="word-wrap">Organization Description [... ... ... ... ... ... ... ... ..
+            ... ... ... ... ... ... ... ... ... .. .. ... ... ... ... ... ...
+            ... ... ... ... ... ... ... ... ... ... ... ... ... ... ... ..
+            ... ... ... ... ...]</p>
+        <h2>Resources</h2>
+        <ul class="list-unstyled">
+            {% for resource in resources %}
+                <li><a href="{{ url_for('resource_detail', resourcename = resource[0]) }}"><h4>{{ resource[0] }}</h4></a></li>
+            {% endfor %}
+        </ul>
+        <div class="row">
+            <button class="btn btn-default col-md-4 col-md-offset-4" name="back" type="button" onclick = "goBack()">Back</button>
+        </div>
+    </div>
+    <div class="col-md-4 container profile-div">
+        <div class="edit-pic center-block">
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+</html>
