@@ -1,5 +1,5 @@
 # AllianceDatabase
-Website managing a database of shared resources for the organizations in Alliance for Survivor Care. Fall 2016 semester-long project carried out by a team of members of the Georgia Tech Epic Intentions organization.
+Website managing a database of shared resources for the organizations in Alliance for Survivor Care. Fall 2016 semester-long project carried out by a team of members of the [Georgia Tech Epic Intentions organization](http://epicintentions.gtorg.gatech.edu/).
 # Team Members
 Team Leader: Michael Chen
 
